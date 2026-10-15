@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b1c">
+<title>Absensi Siswa by Sultan</title>
+<style>
+:root{--bg:#060918;--panel:#0b1430;--panel2:#0b1d3b;--line:#244a9c;--cyan:#36d9ff;--blue:#2878ff;--purple:#8b35ff;--pink:#ff3ca6;--green:#13e69a;--yellow:#ffd43b;--text:#f3f7ff;--muted:#a9bbdf}
+*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at 15% 0%,#15276a 0,transparent 36%),radial-gradient(ellipse at 100% 30%,#35105d 0,transparent 32%),var(--bg);min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px clamp(16px,4vw,46px);border-bottom:1px solid #233b77;background:#050a19d9;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:13px}.logo{font-size:34px;filter:drop-shadow(0 0 12px #31cfff)}h1{font-size:clamp(19px,3vw,30px);margin:0;letter-spacing:.4px;background:linear-gradient(90deg,#4be4ff,#a98aff,#ff66c5);color:transparent;background-clip:text}.subtitle{font-size:12px;color:var(--muted);margin-top:3px}.user-pill{border:1px solid #2b579c;background:#0b1834;padding:10px 13px;border-radius:14px;color:#dceaff;font-size:13px}
+main{width:min(1200px,100%);margin:auto;padding:24px 16px 40px}.hero{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px;border:1px solid #2458b4;border-radius:22px;background:linear-gradient(110deg,#102d81e8,#12163fe8 62%,#3b0f68c9);box-shadow:0 0 32px #1748b333;margin-bottom:20px;overflow:hidden}.hero h2{font-size:clamp(22px,4vw,34px);margin:0 0 7px}.hero p{color:#c8dcff;margin:0}.clock{min-width:205px;text-align:right}.clock strong{display:block;font-size:clamp(21px,3vw,29px);color:var(--cyan);font-variant-numeric:tabular-nums}.clock span{font-size:12px;color:#b6c9f1}
+.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:20px}.panel{background:linear-gradient(150deg,#0b1631f5,#060d20f5);border:1px solid #244e9d;border-radius:20px;padding:20px;box-shadow:0 12px 36px #0005}.panel h3{margin:0 0 17px;font-size:20px}.panel h3 span{color:var(--cyan)}.field-label{display:block;font-size:13px;color:#c5d7ff;margin:15px 0 8px}input[type=text],input[type=password],input[type=search]{width:100%;border:1px solid #315da7;background:#050d20;color:white;border-radius:12px;padding:13px 14px;outline:none}input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #36d9ff20}.statuses{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:10px}.status{border:1px solid #3b4c7a;background:#0a1430;color:#dce7ff;border-radius:13px;padding:13px 5px;text-align:center;transition:.15s}.status .emoji{display:block;font-size:23px;margin-bottom:6px}.status strong{font-size:13px}.status.active{transform:translateY(-2px);box-shadow:0 0 18px #36d9ff2b;border-color:var(--cyan);background:#102a4b}.status[data-status="Hadir"].active{border-color:var(--green);background:#063b31}.status[data-status="Sakit"].active{border-color:var(--pink);background:#40102d}.status[data-status="Izin"].active{border-color:var(--yellow);background:#3b3010}.status[data-status="Alpha"].active{border-color:var(--purple);background:#291143}.submit{width:100%;margin-top:20px;border:0;border-radius:14px;padding:15px;color:white;font-weight:800;background:linear-gradient(100deg,#8534ff,#257fff,#24d3ef);box-shadow:0 7px 22px #246cff35}.submit:hover{filter:brightness(1.12)}.notice{color:var(--muted);font-size:12px;line-height:1.6;margin:14px 0 0}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{border:1px solid #244a8b;border-radius:14px;padding:15px;background:#09142b}.stat small{color:var(--muted)}.stat strong{display:block;font-size:28px;margin-top:5px}.stat:nth-child(1) strong{color:var(--green)}.stat:nth-child(2) strong{color:var(--pink)}.stat:nth-child(3) strong{color:var(--yellow)}.stat:nth-child(4) strong{color:#bb7bff}.history-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 12px}.history-head h3{margin:0}.history-head input{max-width:190px;padding:9px 10px}.table-wrap{overflow:auto;border:1px solid #1d3769;border-radius:12px}table{border-collapse:collapse;width:100%;min-width:460px;font-size:13px}th,td{text-align:left;padding:12px 11px;border-bottom:1px solid #1a2d52}th{background:#0c1b3a;color:#a9dfff;font-weight:650}td{color:#e0e9ff}tr:last-child td{border-bottom:0}.tag{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800}.tag.Hadir{background:#063c30;color:#5fffc3}.tag.Sakit{background:#49102f;color:#ff91ca}.tag.Izin{background:#47370b;color:#ffe27b}.tag.Alpha{background:#31134f;color:#d7a6ff}.empty{text-align:center;color:var(--muted);padding:25px}.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.small-btn{background:#101f40;border:1px solid #31518a;color:#dceaff;border-radius:10px;padding:9px 12px;font-size:12px}.small-btn.danger{border-color:#863d63;color:#ff9bc9}.login-overlay{position:fixed;inset:0;z-index:20;background:#030614eF;display:grid;place-items:center;padding:18px}.login-card{width:min(420px,100%);padding:28px;border:1px solid #3867d3;border-radius:23px;background:linear-gradient(150deg,#111e49,#070b1b);box-shadow:0 0 70px #4520c955}.login-card .logo{font-size:44px;text-align:center}.login-card h2{text-align:center;margin:6px 0}.login-card p{text-align:center;color:var(--muted);font-size:13px;line-height:1.5}.login-card button{margin-top:14px}.hidden{display:none!important}footer{text-align:center;color:#8298c4;font-size:12px;padding:20px 10px 0}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.clock{text-align:left}.statuses{gap:6px}.status{padding:11px 3px}.panel{padding:16px}}@media(max-width:390px){.statuses{grid-template-columns:repeat(2,1fr)}header{padding:14px}.user-pill{font-size:11px;padding:8px}.hero{padding:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">🎓</div><div><h1>ABSENSI SISWA</h1><div class="subtitle">BY SULTAN • Disiplin hari ini, sukses esok nanti</div></div></div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" id="dashboardBtn" type="button">📊 Dashboard</button><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><a href="#dashboard" style="color:#bfeaff;text-decoration:none;border:1px solid #31518a;background:#101f40;border-radius:10px;padding:9px 11px;font-size:12px">📊 Dashboard</a><a href="#attendanceForm" style="color:#bfeaff;text-decoration:none;border:1px solid #31518a;background:#101f40;border-radius:10px;padding:9px 11px;font-size:12px">📝 Absensi</a><div class="user-pill" id="userPill">👤 Belum login</div></div></div>
+</header>
+<main>
+  <section class="hero">
+    <div><h2>⚡ ABSENSI HARI INI</h2><p>Isi kehadiranmu dengan benar dan tepat waktu.</p></div>
+    <div class="clock"><strong id="clock">--:--:-- WIB</strong><span id="dateNow">Memuat tanggal…</span></div>
+  </section>
+  <section class="panel hidden" id="dashboardPanel" style="margin-bottom:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <h3 style="margin:0"><span>▥</span> Dashboard Absensi</h3>
+      <button class="small-btn" id="closeDashboard" type="button">Tutup Dashboard ✕</button>
+    </div>
+    <p class="notice">Ringkasan absensi hari ini dan daftar catatan yang tersimpan di browser/perangkat ini.</p>
+    <div class="stats" style="margin-top:14px">
+      <div class="stat"><small>📚 Total Catatan</small><strong id="dashTotal">0</strong></div>
+      <div class="stat"><small>📅 Tanggal Aktif</small><strong id="dashDate" style="font-size:16px">—</strong></div>
+      <div class="stat"><small>👥 Nama Berbeda Hari Ini</small><strong id="dashStudents">0</strong></div>
+      <div class="stat"><small>🕒 Catatan Terakhir</small><strong id="dashLatest" style="font-size:16px">—</strong></div>
+    </div>
+    <p class="notice">⚠️ Agar semua orang dapat melihat data yang sama dari perangkat berbeda, website perlu dihubungkan ke database online (misalnya Firebase). Dashboard ini saat ini menampilkan data lokal perangkat.</p>
+  </section>
+  <div class="layout">
+    <section class="panel">
+      <h3><span>✦</span> Form Absensi</h3>
+      <form id="attendanceForm">
+        <label class="field-label" for="studentName">Nama lengkap siswa</label>
+        <input id="studentName" type="text" maxlength="70" placeholder="Masukkan nama lengkap kamu" required autocomplete="name">
+        <span class="field-label">Pilih status kehadiran</span>
+        <div class="statuses" id="statuses">
+          <button class="status active" type="button" data-status="Hadir"><span class="emoji">✅</span><strong>Hadir</strong></button>
+          <button class="status" type="button" data-status="Sakit"><span class="emoji">🤒</span><strong>Sakit</strong></button>
+          <button class="status" type="button" data-status="Izin"><span class="emoji">📩</span><strong>Izin</strong></button>
+          <button class="status" type="button" data-status="Alpha"><span class="emoji">❌</span><strong>Alpha</strong></button>
+        </div>
+        <button class="submit" type="submit">🚀 Kirim Absensi</button>
+      </form>
+      <p class="notice">🛡️ Pastikan nama dan status sudah benar sebelum mengirim. Waktu kirim dicatat otomatis menggunakan zona waktu WIB. Daftar dan dashboard bisa dilihat oleh siapa pun yang membuka halaman ini pada perangkat/browser yang sama. Agar data dari semua HP terkumpul dan terlihat semua orang secara online, website harus dihubungkan ke database online.</p>
+      <div class="tools"><button class="small-btn" id="exportBtn" type="button">⬇️ Ekspor CSV</button><button class="small-btn danger" id="clearBtn" type="button">Hapus riwayat lokal</button></div>
+    </section>
+    <section class="panel" id="dashboard">
+      <h3><span>▥</span> Dashboard • Rekap Hari Ini</h3>
+      <div class="stats">
+        <div class="stat"><small>✅ Hadir</small><strong id="countHadir">0</strong></div>
+        <div class="stat"><small>🤒 Sakit</small><strong id="countSakit">0</strong></div>
+        <div class="stat"><small>📩 Izin</small><strong id="countIzin">0</strong></div>
+        <div class="stat"><small>❌ Alpha</small><strong id="countAlpha">0</strong></div>
+      </div>
+      <div class="history-head"><h3>🕘 Riwayat Absensi</h3><input id="search" type="search" placeholder="Cari nama…"></div>
+      <div class="table-wrap"><table><thead><tr><th>Nama</th><th>Status</th><th>Tanggal & waktu (WIB)</th></tr></thead><tbody id="historyBody"></tbody></table><div class="empty" id="empty">Belum ada absensi. Jadilah yang pertama!</div></div>
+    </section>
+  </div>
+  <footer>© <span id="year"></span> Absensi Siswa by Sultan • Belajar disiplin, raih prestasi ✨</footer>
+</main>
+<div class="login-overlay" id="loginOverlay">
+  <form class="login-card" id="loginForm">
+    <div class="logo">🎓</div><h2>Login Absensi</h2><p>Masukkan nama pengguna untuk mulai mengisi absensi.<br>Contoh: Sultan atau NamaKamu</p>
+    <label class="field-label" for="loginName">Nama pengguna</label><input id="loginName" type="text" maxlength="70" placeholder="Tulis nama kamu…" required autocomplete="username">
+    <button class="submit" type="submit">🔓 Masuk</button>
+    <p>Demo login nama saja — belum memakai kata sandi atau akun sekolah.</p>
+  </form>
+</div>
+<script>
+(() => {
+  const TZ = 'Asia/Jakarta';
+  const $ = id => document.getElementById(id);
+  const fmtDate = d => new Intl.DateTimeFormat('id-ID',{timeZone:TZ,weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(d);
+  const fmtTime = d => new Intl.DateTimeFormat('id-ID',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d);
+  const fmtStamp = d => new Intl.DateTimeFormat('id-ID',{timeZone:TZ,day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d).replace(/\./g,':');
+  const todayKey = d => new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
+  let selectedStatus = 'Hadir';
+  let currentUser = '';
+  const storageKey = 'sultanAttendanceRecordsV1';
+  const readRecords = () => { try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch { return []; } };
+  const saveRecords = data => localStorage.setItem(storageKey, JSON.stringify(data));
+  function updateClock(){
+    const now = new Date();
+    $('clock').textContent = fmtTime(now) + ' WIB';
+    $('dateNow').textContent = fmtDate(now) + ' • Batas tanggal berubah pukul 00.00 WIB';
+    $('year').textContent = new Intl.DateTimeFormat('en',{timeZone:TZ,year:'numeric'}).format(now);
+    render();
+  }
+  function render(){
+    const today = todayKey(new Date());
+    const all = readRecords();
+    const todayRecords = all.filter(r => r.day === today);
+    $('dashTotal').textContent = all.length;
+    $('dashDate').textContent = fmtDate(new Date());
+    $('dashStudents').textContent = new Set(todayRecords.map(r => r.name.trim().toLocaleLowerCase('id-ID'))).size;
+    $('dashLatest').textContent = all.length ? (all[all.length-1].timestamp.split(' ').slice(-1)[0] || '—') : '—';
+    ['Hadir','Sakit','Izin','Alpha'].forEach(s => $('count'+s).textContent = todayRecords.filter(r=>r.status===s).length);
+    const query = $('search').value.trim().toLocaleLowerCase('id-ID');
+    const shown = all.filter(r => r.name.toLocaleLowerCase('id-ID').includes(query)).slice().reverse();
+    const body = $('historyBody'); body.replaceChildren();
+    $('empty').classList.toggle('hidden', shown.length > 0);
+    shown.forEach(r => {
+      const tr = document.createElement('tr');
+      const name = document.createElement('td'); name.textContent = r.name;
+      const statusCell = document.createElement('td');
+      const tag = document.createElement('span'); tag.className = 'tag '+r.status; tag.textContent = r.status; statusCell.append(tag);
+      const time = document.createElement('td'); time.textContent = r.timestamp + ' WIB';
+      tr.append(name,statusCell,time); body.append(tr);
+    });
+  }
+  $('statuses').addEventListener('click', e => {
+    const btn = e.target.closest('[data-status]'); if(!btn) return;
+    selectedStatus = btn.dataset.status;
+    document.querySelectorAll('.status').forEach(b=>b.classList.toggle('active',b===btn));
+  });
+  $('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = $('loginName').value.trim();
+    if(!name) return;
+    currentUser = name;
+    $('userPill').textContent = '👤 '+currentUser+' · Logout';
+    $('userPill').style.cursor = 'pointer';
+    $('loginOverlay').classList.add('hidden');
+    $('studentName').value = currentUser;
+  });
+  $('userPill').addEventListener('click', () => {
+    if(currentUser && confirm('Keluar dari sesi '+currentUser+'?')){
+      currentUser = ''; $('userPill').textContent = '👤 Belum login';
+      $('loginName').value = ''; $('loginOverlay').classList.remove('hidden');
+    }
+  });
+  $('attendanceForm').addEventListener('submit', e => {
+    e.preventDefault();
+    if(!currentUser){$('loginOverlay').classList.remove('hidden');return;}
+    const name = $('studentName').value.trim();
+    if(!name){alert('Masukkan nama siswa terlebih dahulu.');return;}
+    const now = new Date();
+    const record = {name, status:selectedStatus, day:todayKey(now), timestamp:fmtStamp(now), iso:now.toISOString(), submittedBy:currentUser};
+    const records = readRecords();
+    // Batasi satu absensi per nama per tanggal pada browser ini; pengguna dapat mengubahnya dengan menghapus data lokal.
+    const idx = records.findIndex(r => r.day === record.day && r.name.trim().toLocaleLowerCase('id-ID') === name.toLocaleLowerCase('id-ID'));
+    if(idx >= 0){
+      if(!confirm('Nama ini sudah mengisi absensi hari ini di perangkat ini. Ganti data sebelumnya dengan status '+selectedStatus+'?')) return;
+      records[idx] = record;
+    } else records.push(record);
+    saveRecords(records); render();
+    alert('Absensi berhasil dicatat di perangkat ini pada '+record.timestamp+' WIB.');
+  });
+  $('search').addEventListener('input', render);
+  $('dashboardBtn').addEventListener('click', () => {
+    $('dashboardPanel').classList.toggle('hidden');
+    if (!$('dashboardPanel').classList.contains('hidden')) {
+      $('dashboardPanel').scrollIntoView({behavior:'smooth', block:'start'});
+      render();
+    }
+  });
+  $('closeDashboard').addEventListener('click', () => $('dashboardPanel').classList.add('hidden'));
+  $('clearBtn').addEventListener('click', () => {
+    if(confirm('Hapus semua riwayat absensi yang tersimpan di browser ini? Tindakan ini tidak bisa dibatalkan.')){
+      localStorage.removeItem(storageKey); render();
+    }
+  });
+  $('exportBtn').addEventListener('click', () => {
+    const rows = readRecords();
+    if(!rows.length){alert('Belum ada data untuk diekspor.');return;}
+    const esc = v => '"'+String(v??'').replace(/"/g,'""')+'"';
+    const csv = '\uFEFF'+[['Nama','Status','Tanggal','Waktu WIB','Pengirim login'],...rows.map(r=>[r.name,r.status,r.day,r.timestamp+' WIB',r.submittedBy])].map(row=>row.map(esc).join(';')).join('\r\n');
+    const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob); const a = document.createElement('a');
+    a.href=url; a.download='absensi-siswa-'+todayKey(new Date())+'.csv'; a.click(); URL.revokeObjectURL(url);
+  });
+  updateClock(); setInterval(updateClock,1000);
+})();
+</script>
+</body>
+</html>
